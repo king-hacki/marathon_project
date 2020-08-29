@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 
 import java.util.LinkedHashSet;
 import java.util.Set;
@@ -22,6 +23,7 @@ public class Marathon {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
+    @NotEmpty(message = "Field title can't be empty")
     private String title;
 
     @OneToMany(cascade = {REFRESH, REMOVE})

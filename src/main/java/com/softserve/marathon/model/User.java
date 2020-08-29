@@ -5,6 +5,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
@@ -23,9 +25,16 @@ public class User {
     private long id;
 
     @Column(unique = true)
+    @Email(message = "Email is not valid")
     private String email;
+
+    @NotEmpty(message = "First name can't be empty")
     private String firstName;
+
+    @NotEmpty(message = "Last name can't be empty")
     private String lastName;
+
+    @NotEmpty(message = "Password can't be empty")
     private String password;
 
     @ManyToOne
