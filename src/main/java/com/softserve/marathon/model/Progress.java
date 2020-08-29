@@ -1,12 +1,11 @@
 package com.softserve.marathon.model;
 
-import com.softserve.marathon.model.enums.Status;
+import com.softserve.marathon.model.enums.TaskStatus;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
-import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -28,7 +27,7 @@ public class Progress {
     private LocalDate updated;
 
     @Enumerated(EnumType.STRING)
-    private Status status;
+    private TaskStatus status;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
