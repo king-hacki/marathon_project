@@ -33,7 +33,7 @@ public class Sprint {
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private LocalDate finishDate;
 
-    @OneToMany(cascade = {REFRESH, REMOVE})
+    @OneToMany(cascade = {REFRESH, REMOVE}, mappedBy = "sprint")
     private Set<Task> tasks = new LinkedHashSet<>();
 
     @ManyToOne

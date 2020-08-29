@@ -37,10 +37,19 @@ public class User {
     @NotEmpty(message = "Password can't be empty")
     private String password;
 
-    @ManyToOne
-    private Role role;
+    @ManyToMany
+    @JoinTable(name = "user_role",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id"))
+    private Set<Role> role = new LinkedHashSet<>();
 
     @OneToMany(cascade = {REFRESH, REMOVE}, mappedBy = "user")
     private Set<Progress> progresses = new LinkedHashSet<>();
+
+    @ManyToMany
+    @JoinTable(name = "user_marathon",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "marathon_id"))
+    private Set<Marathon> marathons = new LinkedHashSet<>();
 
 }

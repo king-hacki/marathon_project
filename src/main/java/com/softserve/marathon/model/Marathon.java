@@ -26,7 +26,10 @@ public class Marathon {
     @NotEmpty(message = "Field title can't be empty")
     private String title;
 
-    @OneToMany(cascade = {REFRESH, REMOVE})
+    @OneToMany(cascade = {REFRESH, REMOVE}, mappedBy = "marathon")
     private Set<Sprint> sprints = new LinkedHashSet<>();
+
+    @ManyToMany(mappedBy = "marathons")
+    private Set<User> users = new LinkedHashSet<>();
 
 }

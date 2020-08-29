@@ -35,7 +35,7 @@ public class Task {
     @UpdateTimestamp
     private LocalDate updated;
 
-    @OneToMany(cascade = {REFRESH, REMOVE})
+    @OneToMany(cascade = {REFRESH, REMOVE}, mappedBy = "task")
     private Set<Progress> progresses = new LinkedHashSet<>();
 
     @ManyToOne
