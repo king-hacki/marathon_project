@@ -19,6 +19,9 @@ VALUES (1, current_date, current_date, 'foo1', 1);
 INSERT INTO sprint(id, finish_date, start_date, title, marathon_id)
 VALUES (2, current_date, current_date, 'foo2', 2);
 
+INSERT INTO sprint(id, finish_date, start_date, title,marathon_id)
+VALUES (3, current_date, current_date, 'foo3', 1);
+
 -- tasks
 INSERT INTO task(id, created, title, updated,sprint_id)
 VALUES (1, current_date, 'foo1', current_date, 1);
