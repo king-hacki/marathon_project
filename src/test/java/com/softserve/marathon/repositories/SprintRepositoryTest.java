@@ -19,10 +19,13 @@ class SprintRepositoryTest {
     @Test
     @Sql("file:src/test/resources/sql/progress_by_userId_and_marathonId.sql")
     void sprintsByMarathonIdTest() {
-        List<Sprint> allByMarathonId = sprintRepository.findAllByMarathonId(1);
-        assertEquals(2, allByMarathonId.size());
-        assertEquals(1, allByMarathonId.get(0).getId());
-        assertEquals(3, allByMarathonId.get(1).getId());
+        List<Sprint> expected;
+        expected = sprintRepository.findAllByMarathonId(1);
+        assertEquals(2, expected.size());
+        assertEquals(1, expected.get(0).getId());
+        assertEquals(3, expected.get(1).getId());
+        expected = sprintRepository.findAllByMarathonId(100);
+        assertEquals(0, expected.size());
     }
 
 }
