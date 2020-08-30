@@ -10,13 +10,12 @@ import javax.validation.constraints.NotEmpty;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
-import static javax.persistence.CascadeType.REFRESH;
-import static javax.persistence.CascadeType.REMOVE;
+import static javax.persistence.CascadeType.*;
 
 @Entity
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 @Table(name = "users")
 public class User {
 
@@ -37,7 +36,7 @@ public class User {
     @NotEmpty(message = "Password can't be empty")
     private String password;
 
-    @ManyToMany
+    @ManyToMany(cascade = MERGE)
     @JoinTable(name = "user_role",
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id"))
@@ -51,5 +50,4 @@ public class User {
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "marathon_id"))
     private Set<Marathon> marathons = new LinkedHashSet<>();
-
 }
