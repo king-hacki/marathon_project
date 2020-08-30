@@ -1,9 +1,11 @@
 package com.softserve.marathon.services;
 
 import com.softserve.marathon.model.Marathon;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public interface MarathonService {
     List<Marathon> getAll();
     Marathon getMarathonById(long id);
