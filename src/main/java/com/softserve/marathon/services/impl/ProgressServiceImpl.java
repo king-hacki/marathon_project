@@ -33,7 +33,6 @@ public class ProgressServiceImpl implements ProgressService {
     @Override
     public Progress addTaskForStudent(Task task, User user) {
         Progress progress = new Progress();
-        progress.setStatus(TaskStatus.STARTED);
         progress.setTask(task);
         progress.setUser(user);
         Progress progressEntity = progressRepository.save(progress);
@@ -45,18 +44,6 @@ public class ProgressServiceImpl implements ProgressService {
     @Override
     public Progress addOrUpdateProgress(Progress progress) {
         return progressRepository.save(progress);
-    }
-
-    @Override
-    public boolean setStatus(TaskStatus status, Progress progress) {
-        try {
-            Progress progressEntity = getProgressById(progress.getId());
-            progressEntity.setStatus(status);
-            addOrUpdateProgress(progressEntity);
-            return true;
-        } catch (ProgressNotFoundByIdException e) {
-            return false;
-        }
     }
 
     @Override

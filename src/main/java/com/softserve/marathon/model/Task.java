@@ -1,5 +1,6 @@
 package com.softserve.marathon.model;
 
+import com.softserve.marathon.model.enums.TaskStatus;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -28,6 +29,9 @@ public class Task {
 
     @NotEmpty(message = "Field title can't be empty")
     private String title;
+
+    @Enumerated(EnumType.STRING)
+    private TaskStatus status;
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private LocalDate created;

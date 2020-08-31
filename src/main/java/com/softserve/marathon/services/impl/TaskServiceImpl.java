@@ -1,9 +1,12 @@
 package com.softserve.marathon.services.impl;
 
+import com.softserve.marathon.exceptions.ProgressNotFoundByIdException;
 import com.softserve.marathon.exceptions.SprintNotFoundByIdException;
 import com.softserve.marathon.exceptions.TaskNotFoundByIdException;
+import com.softserve.marathon.model.Progress;
 import com.softserve.marathon.model.Sprint;
 import com.softserve.marathon.model.Task;
+import com.softserve.marathon.model.enums.TaskStatus;
 import com.softserve.marathon.repositories.SprintRepository;
 import com.softserve.marathon.repositories.TaskRepository;
 import com.softserve.marathon.services.TaskService;
@@ -42,5 +45,17 @@ public class TaskServiceImpl implements TaskService {
     @Override
     public Task getTaskById(long id) {
         return taskRepository.findById(id).orElseThrow(TaskNotFoundByIdException::new);
+    }
+
+    @Override
+    public boolean setStatus(TaskStatus status, Task task) {
+        try {
+            Task taskEntity = getTaskById(task.getId());
+            taskEntity.setStatus(status);
+            taskRepository.save(taskEntity);
+            return true;
+        } catch (TaskNotFoundByIdException e) {
+            return false;
+        }
     }
 }

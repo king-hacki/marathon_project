@@ -1,7 +1,11 @@
 package com.softserve.marathon.services;
 
+import com.softserve.marathon.exceptions.ProgressNotFoundByIdException;
 import com.softserve.marathon.model.Marathon;
+import com.softserve.marathon.model.Progress;
 import com.softserve.marathon.model.Sprint;
+import com.softserve.marathon.model.Task;
+import com.softserve.marathon.model.enums.TaskStatus;
 
 import java.util.List;
 

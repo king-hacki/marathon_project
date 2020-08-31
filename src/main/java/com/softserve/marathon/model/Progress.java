@@ -26,8 +26,7 @@ public class Progress {
     @UpdateTimestamp
     private LocalDate updated;
 
-    @Enumerated(EnumType.STRING)
-    private TaskStatus status;
+
 
     @ManyToOne
     @JoinColumn(name = "user_id")
