@@ -30,6 +30,10 @@ public class Task {
     @NotEmpty(message = "Field title can't be empty")
     private String title;
 
+    @NotEmpty(message = "Task can't be empty")
+    @Column(name = "task_description")
+    private String taskDescription;
+
     @Enumerated(EnumType.STRING)
     private TaskStatus status;
 

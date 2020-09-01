@@ -20,13 +20,13 @@ public class Progress {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
+    private String solution;
+
     @CreationTimestamp
     private LocalDate started;
 
     @UpdateTimestamp
     private LocalDate updated;
-
-
 
     @ManyToOne
     @JoinColumn(name = "user_id")
