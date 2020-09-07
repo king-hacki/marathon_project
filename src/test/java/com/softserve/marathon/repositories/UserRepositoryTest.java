@@ -1,11 +1,13 @@
 package com.softserve.marathon.repositories;
 
+import com.softserve.marathon.model.Marathon;
 import com.softserve.marathon.model.Role;
 import com.softserve.marathon.model.User;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
+import org.springframework.test.context.jdbc.Sql;
 
 import java.util.List;
 import java.util.Set;
@@ -74,6 +76,23 @@ class UserRepositoryTest {
         List<User> actualAdmins = userRepository.findAllByRoleRoleName(ROLE_ADMIN);
         System.out.println("actualAdmins = " + actualAdmins);
         assertEquals(expectedAdmins, actualAdmins);
+
+    }
+
+    @Test
+    @Sql("file:src/test/resources/sql/marathon.sql")
+    void testUsersByMarathonID() {
+
+        User user = new User();
+        user.setId(1L);
+        user.setFirstName("test");
+        user.setLastName("test");
+        user.setEmail("test@gmail.com");
+        user.setPassword("test");
+
+        List<User> expected = List.of(user);
+        List<User> actual = userRepository.findAllByMarathonsId(1);
+        assertEquals(expected, actual);
 
     }
 
