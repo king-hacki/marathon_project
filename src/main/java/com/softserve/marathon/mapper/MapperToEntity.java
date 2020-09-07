@@ -1,4 +1,5 @@
 package com.softserve.marathon.mapper;
 
-public interface MapperToEntity {
+public interface MapperToEntity<D, E> {
+    E convertToEntity(D dto);
 }
