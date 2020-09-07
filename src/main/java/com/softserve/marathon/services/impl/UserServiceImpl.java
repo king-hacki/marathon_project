@@ -12,6 +12,9 @@ import com.softserve.marathon.services.UserService;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -85,5 +88,10 @@ public class UserServiceImpl implements UserService {
 
     }
 
-
+    @Override
+    public UserDetails loadUserByUsername(String mail) throws UsernameNotFoundException {
+        User user = getUserByMail(mail);
+        if (user == null) throw new UsernameNotFoundException("user not found by email: " + mail);
+        return user;
+    }
 }
