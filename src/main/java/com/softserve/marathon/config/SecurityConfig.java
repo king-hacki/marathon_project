@@ -60,7 +60,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .accessDeniedHandler((req, res, exc) -> res.sendError(SC_FORBIDDEN, "You don't have permission"))
                 .and()
                 .authorizeRequests()
-                .antMatchers("/security").permitAll()
+                .antMatchers("/security/**").permitAll()
                 .anyRequest().authenticated();
     }
 }

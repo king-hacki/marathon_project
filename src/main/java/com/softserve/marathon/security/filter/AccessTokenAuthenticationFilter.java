@@ -43,7 +43,7 @@ public class AccessTokenAuthenticationFilter extends OncePerRequestFilter {
             } catch (Exception e) {
                 log.error("Access denied with token " + e.getMessage());
             }
-            filterChain.doFilter(httpServletRequest, httpServletResponse);
         }
+        filterChain.doFilter(httpServletRequest, httpServletResponse);
     }
 }
