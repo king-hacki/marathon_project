@@ -1,4 +1,4 @@
-package com.softserve.marathon.dto;
+package com.softserve.marathon.dto.marathon;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -12,11 +12,7 @@ import javax.validation.constraints.NotNull;
 @NoArgsConstructor
 @AllArgsConstructor
 public class MarathonDto {
-
-    @NotNull
-    @Min(value = 1, message = "Marathon id must be a positive number")
-    private Long id;
-
-    @NotEmpty(message = "Marathon text must not be null")
+    @NotEmpty(message = "Marathon title must not be empty")
     private String title;
+    private Long id;
 }
