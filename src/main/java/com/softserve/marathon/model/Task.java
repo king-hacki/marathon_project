@@ -1,9 +1,7 @@
 package com.softserve.marathon.model;
 
 import com.softserve.marathon.model.enums.TaskStatus;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -21,6 +19,8 @@ import static javax.persistence.CascadeType.REMOVE;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString(exclude = {"progresses"})
+@EqualsAndHashCode(exclude = {"progresses"})
 public class Task {
 
     @Id

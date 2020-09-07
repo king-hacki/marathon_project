@@ -1,8 +1,6 @@
 package com.softserve.marathon.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
@@ -17,6 +15,8 @@ import static javax.persistence.CascadeType.REMOVE;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString(exclude = {"users", "sprints"})
+@EqualsAndHashCode(exclude = {"users", "sprints"})
 public class Marathon {
 
     @Id

@@ -1,8 +1,6 @@
 package com.softserve.marathon.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -18,6 +16,8 @@ import static javax.persistence.CascadeType.REMOVE;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString(exclude = {"tasks"})
+@EqualsAndHashCode(exclude = {"tasks"})
 public class Sprint {
 
     @Id

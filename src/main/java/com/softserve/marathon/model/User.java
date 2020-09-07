@@ -1,8 +1,6 @@
 package com.softserve.marathon.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
@@ -16,6 +14,8 @@ import static javax.persistence.CascadeType.*;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@ToString(exclude = {"progresses", "marathons"})
+@EqualsAndHashCode(exclude = {"progresses", "marathons"})
 @Table(name = "users")
 public class User {
 
