@@ -9,4 +9,5 @@ import java.util.List;
 @Repository
 public interface MarathonRepository extends CrudRepository<Marathon, Long> {
     List<Marathon> findAll();
+    List<Marathon> findAllByUsersId(long userId);
 }

@@ -10,4 +10,6 @@ import java.util.List;
 public interface ProgressRepository extends CrudRepository<Progress, Long> {
     List<Progress> findAllByUserIdAndTaskSprintMarathonId(long userId, long marathonId);
     List<Progress> findAllByUserIdAndTaskSprintId(long userId, long sprintId);
+    List<Progress> findAllByTaskId(long taskId);
+    List<Progress> findAllByUserId(long userId);
 }
