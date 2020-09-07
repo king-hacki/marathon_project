@@ -1,31 +1,36 @@
 package com.softserve.marathon.services.impl;
 
+import com.softserve.marathon.dto.sprint.SprintDto;
 import com.softserve.marathon.exceptions.SprintNotFoundByIdException;
+import com.softserve.marathon.mapper.SprintDtoMapper;
 import com.softserve.marathon.model.Marathon;
 import com.softserve.marathon.model.Sprint;
 import com.softserve.marathon.repositories.SprintRepository;
+import com.softserve.marathon.services.MarathonService;
 import com.softserve.marathon.services.SprintService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
-import java.util.Optional;
+
+import static java.util.stream.Collectors.toList;
 
 @Service
 @Transactional
+@AllArgsConstructor
 public class SprintServiceImpl implements SprintService {
 
     private SprintRepository sprintRepository;
-
-    @Autowired
-    public SprintServiceImpl(SprintRepository sprintRepository) {
-        this.sprintRepository = sprintRepository;
-    }
+    private MarathonService marathonService;
+    private SprintDtoMapper sprintDtoMapper;
 
     @Override
-    public List<Sprint> getSprintsByMarathon(long marathonId) {
-        return sprintRepository.findAllByMarathonId(marathonId);
+    public List<SprintDto> getSprintsByMarathon(long marathonId) {
+        List<Sprint> sprintsByMarathonId = sprintRepository.findAllByMarathonId(marathonId);
+        return sprintsByMarathonId.stream()
+                .map(sprint -> sprintDtoMapper.convertToDto(sprint))
+                .collect(toList());
     }
 
     @Override
@@ -40,13 +45,27 @@ public class SprintServiceImpl implements SprintService {
     }
 
     @Override
-    public Sprint updateOrSaveSprint(Sprint sprint) {
-        return sprintRepository.save(sprint);
+    public Sprint getById(long sprintId) {
+        return sprintRepository.findById(sprintId)
+                .orElseThrow(SprintNotFoundByIdException::new);
     }
 
     @Override
-    public Sprint getSprintById(long sprintId) {
-        return sprintRepository.findById(sprintId)
-                .orElseThrow(SprintNotFoundByIdException::new);
+    public void deleteById(long sprintId) {
+        sprintRepository.deleteById(sprintId);
+    }
+
+    @Override
+    public Sprint update(SprintDto dto) {
+        getById(dto.getId());
+        return sprintRepository.save(sprintDtoMapper.convertToEntity(dto));
+    }
+
+    @Override
+    public Sprint save(SprintDto dto) {
+        Sprint sprintEntity = sprintRepository.save(sprintDtoMapper.convertToEntity(dto));
+        Marathon marathonEntity = marathonService.getById(dto.getMarathonId());
+        addSprintToMarathon(sprintEntity, marathonEntity);
+        return sprintEntity;
     }
 }
