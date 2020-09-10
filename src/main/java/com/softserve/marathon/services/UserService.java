@@ -1,5 +1,6 @@
 package com.softserve.marathon.services;
 
+import com.softserve.marathon.dto.user.RegistrationDto;
 import com.softserve.marathon.dto.user.UserDto;
 import com.softserve.marathon.model.Marathon;
 import com.softserve.marathon.model.User;
@@ -9,11 +10,12 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service
+@Service("userService")
 public interface UserService extends CrudService<User, UserDto>, UserDetailsService {
     List<UserDto> getAll();
     List<UserDto> getUsersByMarathonId(long marathonId);
     User getUserByMail(String userMail);
     List<User> getAllByRole(RoleConstant roleConstant);
-    boolean addUserToMarathon(User user, Marathon marathon);
+    boolean addUserToMarathon(String email, long marathonId);
+    UserDto registration(RegistrationDto dto);
 }
