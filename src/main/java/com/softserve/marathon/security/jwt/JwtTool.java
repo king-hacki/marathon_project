@@ -1,8 +1,6 @@
 package com.softserve.marathon.security.jwt;
 
-import io.jsonwebtoken.Claims;
-import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
+import io.jsonwebtoken.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -53,5 +51,34 @@ public class JwtTool {
                 .setExpiration(expires.getTime())
                 .signWith(SignatureAlgorithm.HS256, accessTokenKey)
                 .compact();
+    }
+
+    public boolean validateToken(String token) {
+        try {
+            Jwts.parser().setSigningKey(accessTokenKey).parseClaimsJws(token);
+            return true;
+        } catch (SignatureException ex) {
+            log.info("Invalid Jwt Signature");
+            return false;
+        } catch (MalformedJwtException ex) {
+            log.info("Invalid Jwt token");
+            return false;
+        } catch (ExpiredJwtException ex) {
+            log.info("Expired jwt token");
+            return false;
+        } catch (UnsupportedJwtException ex) {
+            log.info("Unsupported Jwt token");
+            return false;
+        } catch (IllegalArgumentException ex) {
+            log.info("Jwt claims string is empty");
+            return false;
+        }
+    }
+
+    public String getUsernameFromToken(String token){
+        return Jwts.parser()
+                .setSigningKey(accessTokenKey)
+                .parseClaimsJws(token)
+                .getBody().getSubject();
     }
 }
