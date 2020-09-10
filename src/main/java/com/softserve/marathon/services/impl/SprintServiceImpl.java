@@ -68,4 +68,5 @@ public class SprintServiceImpl implements SprintService {
         addSprintToMarathon(sprintEntity, marathonEntity);
         return sprintEntity;
     }
+
 }

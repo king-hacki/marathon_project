@@ -68,8 +68,7 @@ public class ProgressController {
         return ok(progressDto.getSolution());
     }
 
-    @PreAuthorize("hasAuthority('ROLE_ADMIN') " +
-            "or hasAuthority('ROLE_USER') and @userServiceImpl.isUsersId(#dto.userId)" +
+    @PreAuthorize("hasAuthority('ROLE_USER') and @userServiceImpl.isUsersId(#dto.userId)" +
             " and @userServiceImpl.isUserHaveProgress(#dto.taskId)")
     @PostMapping("/save")
     public ResponseEntity<ProgressDto> save(@Valid @RequestBody SaveProgressDto dto) {
@@ -77,8 +76,7 @@ public class ProgressController {
         return ok(progressService.saveByUserIdSolutionAndTaskId(dto));
     }
 
-    @PreAuthorize("hasAuthority('ROLE_ADMIN') " +
-            "or hasAuthority('ROLE_USER') and @userServiceImpl.isUsersId(#dto.userId)" +
+    @PreAuthorize("hasAuthority('ROLE_USER') and @userServiceImpl.isUsersId(#dto.userId)" +
             " and @userServiceImpl.isUserHaveProgress(#dto.taskId)")
     @PutMapping("/update")
     public ResponseEntity<ProgressDto> update(@Valid @RequestBody SaveProgressDto dto) {
