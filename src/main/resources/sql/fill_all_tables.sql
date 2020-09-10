@@ -8,11 +8,11 @@ VALUES ('ROLE_ADMIN');
 
 -- users
 INSERT INTO users(email, first_name, last_name, password)
-VALUES ('user1@gmail.com', 'user1', 'user1', '$2a$10$VgFIvZkGi2xbRFnsejMiFuSrlPmkI4dc73n0qe.qIg/7e5mpJfmNi');
+VALUES ('user1@gmail.com', 'John', 'Smith', '$2a$10$VgFIvZkGi2xbRFnsejMiFuSrlPmkI4dc73n0qe.qIg/7e5mpJfmNi');
 INSERT INTO users(email, first_name, last_name, password)
-VALUES ('user2@gmail.com', 'user2', 'user2', '$2a$10$U0oEh9zNNQkJxp8pTw525.38w5vIKQf57teqlu.R2VIoRW4f/hGRu');
+VALUES ('user2@gmail.com', 'Zakhar', 'Kostyshyn', '$2a$10$U0oEh9zNNQkJxp8pTw525.38w5vIKQf57teqlu.R2VIoRW4f/hGRu');
 INSERT INTO users(email, first_name, last_name, password)
-VALUES ('user3@gmail.com', 'user3', 'user3', '$2a$10$YmknfDgQPl8D7ImlNEiVfO73iwguAD9l098VZl7D21e0IWb0a5I0O');
+VALUES ('user3@gmail.com', 'Svitlana', 'Pyatkivska', '$2a$10$YmknfDgQPl8D7ImlNEiVfO73iwguAD9l098VZl7D21e0IWb0a5I0O');
 INSERT INTO users(email, first_name, last_name, password)
 VALUES ('admin@gmail.com', 'admin', 'admin', '$2a$10$juk/tuc7LoEoa3q1Js486Oa08xa1BhlvKdaktxIJ0IpUKAP9.nth2');
 
