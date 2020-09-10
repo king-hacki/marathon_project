@@ -2,7 +2,7 @@ package com.softserve.marathon.services.impl;
 
 import com.softserve.marathon.dto.user.RegistrationDto;
 import com.softserve.marathon.dto.user.UserDto;
-import com.softserve.marathon.exceptions.UserNotFoundByIdException;
+import com.softserve.marathon.exception.exceptions.UserNotFoundByIdException;
 import com.softserve.marathon.mapper.UserDtoMapper;
 import com.softserve.marathon.model.Marathon;
 import com.softserve.marathon.model.Role;
@@ -14,20 +14,15 @@ import com.softserve.marathon.services.MarathonService;
 import com.softserve.marathon.services.UserService;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import javax.validation.Valid;
 import java.util.List;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 import static com.softserve.marathon.model.enums.RoleConstant.ROLE_USER;
 import static java.util.stream.Collectors.toList;

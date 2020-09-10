@@ -4,7 +4,7 @@ import com.softserve.marathon.dto.progress.ProgressDto;
 import com.softserve.marathon.dto.progress.SaveProgressDto;
 import com.softserve.marathon.dto.progress.TaskAndSolutionDto;
 import com.softserve.marathon.dto.progress.UserIdAndTaskIdDto;
-import com.softserve.marathon.exceptions.ProgressNotFoundByIdException;
+import com.softserve.marathon.exception.exceptions.ProgressNotFoundByIdException;
 import com.softserve.marathon.mapper.ProgressDtoMapper;
 import com.softserve.marathon.model.Progress;
 import com.softserve.marathon.model.Task;
@@ -15,7 +15,6 @@ import com.softserve.marathon.services.TaskService;
 import com.softserve.marathon.services.UserService;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;

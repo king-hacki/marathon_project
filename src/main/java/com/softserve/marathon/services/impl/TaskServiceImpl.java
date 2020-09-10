@@ -1,7 +1,7 @@
 package com.softserve.marathon.services.impl;
 
 import com.softserve.marathon.dto.task.TaskDto;
-import com.softserve.marathon.exceptions.TaskNotFoundByIdException;
+import com.softserve.marathon.exception.exceptions.TaskNotFoundByIdException;
 import com.softserve.marathon.mapper.TaskDtoMapper;
 import com.softserve.marathon.model.Sprint;
 import com.softserve.marathon.model.Task;

@@ -1,4 +1,4 @@
-package com.softserve.marathon.exceptions;
+package com.softserve.marathon.exception.exceptions;
 
 public class SprintNotFoundByIdException extends RuntimeException {
 }

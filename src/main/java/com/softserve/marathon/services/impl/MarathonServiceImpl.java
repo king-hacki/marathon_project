@@ -1,7 +1,7 @@
 package com.softserve.marathon.services.impl;
 
 import com.softserve.marathon.dto.marathon.MarathonDto;
-import com.softserve.marathon.exceptions.MarathonNotFoundByIdException;
+import com.softserve.marathon.exception.exceptions.MarathonNotFoundByIdException;
 import com.softserve.marathon.model.Marathon;
 import com.softserve.marathon.repositories.MarathonRepository;
 import com.softserve.marathon.services.MarathonService;

@@ -1,7 +1,7 @@
 package com.softserve.marathon.security.service.impl;
 
 import com.softserve.marathon.dto.user.UserDto;
-import com.softserve.marathon.exceptions.BadEmailOrPasswordException;
+import com.softserve.marathon.exception.exceptions.BadEmailOrPasswordException;
 import com.softserve.marathon.mapper.UserDtoMapper;
 import com.softserve.marathon.model.User;
 import com.softserve.marathon.security.dto.SignInDto;
@@ -16,9 +16,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
-import java.util.Collection;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import static java.util.stream.Collectors.toList;
 
